@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Smart Ration Card</string>
+    <string name="card_number">Card Number</string>
+    <string name="card_number_hint">Enter your card number</string>
+    <string name="name">Name</string>
+    <string name="name_hint">Enter your name</string>
+    <string name="apl">APL</string>
+    <string name="bpl">BPL</string>
+    <string name="family_members">Number Of Family Members</string>
+    <string name="family_memebers_hint">Enter the number of family members</string>
+    <string name="address">Address</string>
+    <string name="address_hint">Enter your address</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="mobile_number_hint">Enter your mobile number</string>
+    <string name="submit">SUBMIT</string>
+    <string name="upload_picture">Upload Picture</string>
+
+</resources>

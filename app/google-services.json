@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "181208925972",
+    "firebase_url": "https://smart-ration-card.firebaseio.com",
+    "project_id": "smart-ration-card",
+    "storage_bucket": "smart-ration-card.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181208925972:android:f306fc9906ced595",
+        "android_client_info": {
+          "package_name": "com.smartcard.smartrationcard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "181208925972-bmug2co7jqfbr294obq4ftt1r5tqo4b4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smartcard.smartrationcard",
+            "certificate_hash": "5d96b4045dd9d1b425673c6ed2945b0f6b80e15e"
+          }
+        },
+        {
+          "client_id": "181208925972-9mvnspdvi5t5c6lhsoggfuhhpo26dabm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU4TgMMizhRKB9B2VyZqqyaPCnOclYY54"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "181208925972-9mvnspdvi5t5c6lhsoggfuhhpo26dabm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Smart-Ration-Card.iml" filepath="$PROJECT_DIR$/Smart-Ration-Card.iml" />
-      <module fileurl="file://C:\Users\nihal369\Desktop\Programming\Smart-Ration-Card\SmartRationCard.iml" filepath="C:\Users\nihal369\Desktop\Programming\Smart-Ration-Card\SmartRationCard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Smart-Ration-Card-70.iml" filepath="$PROJECT_DIR$/Smart-Ration-Card-70.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\nihal369\Desktop\Programming\Smart-Ration-Card\app\app.iml" filepath="C:\Users\nihal369\Desktop\Programming\Smart-Ration-Card\app\app.iml" />
     </modules>
   </component>
 </project>

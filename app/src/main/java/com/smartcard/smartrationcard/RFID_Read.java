@@ -70,4 +70,11 @@ public class RFID_Read extends AppCompatActivity {
 
         }
     }
+
+    //Move to AdminLogin Activity
+    public void moveToAdminLogin(View view)
+    {
+        Intent intent = new Intent(RFID_Read.this, AdminLogin.class);
+        startActivity(intent);
+    }
 }

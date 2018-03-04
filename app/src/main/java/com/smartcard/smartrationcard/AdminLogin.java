@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import es.dmoral.toasty.Toasty;
 
 public class AdminLogin extends AppCompatActivity {
 
@@ -25,8 +28,19 @@ public class AdminLogin extends AppCompatActivity {
     //Move to admin panel activity
     public void moveToAdminPanel(View view)
     {
-        Intent intent=new Intent(this,AdminPanel.class);
-        startActivity(intent);
-        finish();
+        adminID=adminIdEditText.getText().toString();
+        adminPassword=adminPasswordEditText.getText().toString();
+
+        if(adminID.equals("admin") && adminPassword.equals("admin")) {
+            Toasty.success(this, "Admin Login Success", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, AdminPanel.class);
+            startActivity(intent);
+            finish();
+        }
+
+        else
+        {
+            Toasty.error(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+        }
     }
 }

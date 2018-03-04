@@ -12,7 +12,7 @@ public class RationShop {
 
             //Amount to be distributed,Actual amount=amount x APLorBPL factor
             riceQuantity=2,
-            wheatQuanity=1,
+            wheatQuantity=1,
             keroseneQuantity=1,
             pulsesQuantity=1;
 
@@ -29,7 +29,7 @@ public class RationShop {
 
     public static int getRiceQuantity(){return riceQuantity;}
 
-    public static int getWheatQuanity(){return wheatQuanity;}
+    public static int getWheatQuanity(){return wheatQuantity;}
 
     public static int getKeroseneQuantity(){return keroseneQuantity;}
 
@@ -38,4 +38,45 @@ public class RationShop {
     public static int getAplFactor(){return aplFactor;}
 
     public static int getBplFactor(){return bplFactor;}
+
+    public static void setKerosenePrice(int kerosenePrice) {
+        RationShop.kerosenePrice = kerosenePrice;
+    }
+
+    public static void setAplFactor(int aplFactor) {
+        RationShop.aplFactor = aplFactor;
+    }
+
+    public static void setBplFactor(int bplFactor) {
+        RationShop.bplFactor = bplFactor;
+    }
+
+    public static void setPulsesPrice(int pulsesPrice) {
+        RationShop.pulsesPrice = pulsesPrice;
+    }
+
+    public static void setKeroseneQuantity(int keroseneQuantity) {
+        RationShop.keroseneQuantity = keroseneQuantity;
+    }
+
+    public static void setPulsesQuantity(int pulsesQuantity) {
+        RationShop.pulsesQuantity = pulsesQuantity;
+    }
+
+    public static void setRicePrice(int ricePrice) {
+        RationShop.ricePrice = ricePrice;
+    }
+
+    public static void setRiceQuantity(int riceQuantity) {
+        RationShop.riceQuantity = riceQuantity;
+    }
+
+    public static void setWheatPrice(int wheatPrice) {
+        RationShop.wheatPrice = wheatPrice;
+    }
+
+    public static void setWheatQuantity(int wheatQuantity) {
+        RationShop.wheatQuantity = wheatQuantity;
+    }
+
 }

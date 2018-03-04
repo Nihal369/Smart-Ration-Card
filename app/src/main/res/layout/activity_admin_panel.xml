@@ -1,9 +1,356 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.smartcard.smartrationcard.AdminPanel">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/adminmale"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/adminPanelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="monospace"
+            android:text="ADMINISTRATOR PANEL"
+            android:textColor="@color/colorSecondary"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+
+        <TextView
+            android:id="@+id/aplfactortext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="44dp"
+            android:fontFamily="monospace"
+            android:text="APL FACTOR"
+            android:textColor="@color/colorSecondary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adminPanelText" />
+
+        <TextView
+            android:id="@+id/bplfactortext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="monospace"
+            android:text="BPL FACTOR"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aplfactortext"/>
+
+        <TextView
+            android:id="@+id/ricepriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="monospace"
+            android:text="RICE PRICE"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bplfactortext"/>
+
+        <TextView
+            android:id="@+id/wheatPriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="monospace"
+            android:text="WHEAT PRICE"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ricepriceText"/>
+
+        <TextView
+            android:id="@+id/kerosenePriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="monospace"
+            android:text="KEROSENE PRICE"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wheatPriceText"/>
+
+        <TextView
+            android:id="@+id/pulsesPriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="monospace"
+            android:text="PULSES PRICE"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kerosenePriceText"/>
+
+        <TextView
+            android:id="@+id/riceQuantityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="monospace"
+            android:text="RICE QUANTITY"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pulsesPriceText"/>
+
+        <TextView
+            android:id="@+id/wheatQuantityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="monospace"
+            android:text="WHEAT QUANTITY"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/riceQuantityText"/>
+
+        <TextView
+            android:id="@+id/keroseneQuantityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="monospace"
+            android:text="KEROSENE QUANTITY"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wheatQuantityText"/>
+
+        <TextView
+            android:id="@+id/pulsesQuantityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="monospace"
+            android:text="PULSES QUANTITY"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorSecondary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/keroseneQuantityText"/>
+
+
+        <EditText
+            android:id="@+id/aplfactoredittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="188dp"
+            android:backgroundTint="@color/colorAccent"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColorHint="@color/colorSecondary"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/aplfactortext"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/bplfactoredittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="220dp"
+            android:backgroundTint="@color/colorAccent"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColorHint="@color/colorSecondary"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/aplfactortext"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/ricepriceedittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="256dp"
+            android:backgroundTint="@color/colorAccent"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textAlignment="center"
+            android:textColorHint="@color/colorSecondary"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/ricepriceText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/wheatpriceedittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="288dp"
+            android:backgroundTint="@color/colorAccent"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textAlignment="center"
+            android:textColorHint="@color/colorSecondary"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/wheatPriceText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/kerosenepriceedittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="324dp"
+            android:backgroundTint="@color/colorAccent"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textAlignment="center"
+            android:textColorHint="@color/colorSecondary"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/kerosenePriceText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/pulsespriceedittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="360dp"
+            android:backgroundTint="@color/colorAccent"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textAlignment="center"
+            android:textColorHint="@color/colorSecondary"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/pulsesPriceText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/ricequanityeedittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="396dp"
+            android:backgroundTint="@color/colorAccent"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textAlignment="center"
+            android:textColorHint="@color/colorSecondary"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/riceQuantityText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/wheatquanityeedittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="428dp"
+            android:backgroundTint="@color/colorAccent"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textAlignment="center"
+            android:textColorHint="@color/colorSecondary"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/wheatQuantityText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/kerosenequanityeedittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="464dp"
+            android:backgroundTint="@color/colorAccent"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textAlignment="center"
+            android:textColorHint="@color/colorSecondary"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/keroseneQuantityText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/pulsesquanityeedittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="500dp"
+            android:backgroundTint="@color/colorAccent"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textAlignment="center"
+            android:textColorHint="@color/colorSecondary"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/pulsesQuantityText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <Button
+            android:id="@+id/updateButton"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/colorSecondary"
+            android:text="UPDATE"
+            android:layout_marginTop="36dp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pulsesQuantityText" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginStart="36dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="CANCEL"
+            android:textColor="@color/colorSecondary"
+            app:layout_constraintStart_toEndOf="@+id/updateButton"
+            app:layout_constraintTop_toBottomOf="@id/pulsesQuantityText" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

@@ -39,7 +39,8 @@
         <activity
             android:name=".PurchaseComplete"
             android:screenOrientation="portrait" />
-        <activity android:name=".AdminLogin"></activity>
+        <activity android:name=".AdminLogin" />
+        <activity android:name=".AdminPanel"></activity>
     </application>
 
 </manifest>

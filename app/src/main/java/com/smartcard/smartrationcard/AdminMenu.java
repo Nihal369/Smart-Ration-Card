@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class AdminMenu extends AppCompatActivity {
-    Intent intent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,18 +16,21 @@ public class AdminMenu extends AppCompatActivity {
 
     public void goToAddUser(View view)
     {
+        Intent intent;
         intent=new Intent(this,AddUser.class);
         startActivity(intent);
     }
 
     public void goToRemoveUser(View view)
     {
+        Intent intent;
         intent=new Intent(this,RemoveUser.class);
         startActivity(intent);
     }
 
     public void goToAdminPanel(View view)
     {
+        Intent intent;
         intent=new Intent(this,AdminPanel.class);
         startActivity(intent);
     }

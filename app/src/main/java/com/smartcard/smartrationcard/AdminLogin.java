@@ -26,14 +26,14 @@ public class AdminLogin extends AppCompatActivity {
     }
 
     //Move to admin panel activity
-    public void moveToAdminPanel(View view)
+    public void moveToAdminMenu(View view)
     {
         adminID=adminIdEditText.getText().toString();
         adminPassword=adminPasswordEditText.getText().toString();
 
         if(adminID.equals("admin") && adminPassword.equals("admin")) {
             Toasty.success(this, "Admin Login Success", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, AdminPanel.class);
+            Intent intent = new Intent(this, AdminMenu.class);
             startActivity(intent);
             finish();
         }

@@ -40,7 +40,9 @@
             android:name=".PurchaseComplete"
             android:screenOrientation="portrait" />
         <activity android:name=".AdminLogin" />
-        <activity android:name=".AdminPanel"></activity>
+        <activity android:name=".AdminPanel" />
+        <activity android:name=".AddUser" />
+        <activity android:name=".RemoveUser"></activity>
     </application>
 
 </manifest>

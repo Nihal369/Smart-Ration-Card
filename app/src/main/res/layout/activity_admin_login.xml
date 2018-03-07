@@ -78,7 +78,7 @@
         android:layout_marginStart="8dp"
         android:background="@color/colorSecondary"
         android:text="LOGIN"
-        android:onClick="moveToAdminPanel"
+        android:onClick="moveToAdminMenu"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

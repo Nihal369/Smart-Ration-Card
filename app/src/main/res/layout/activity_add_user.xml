@@ -176,6 +176,7 @@
             android:paddingEnd="24dp"
             android:paddingStart="24dp"
             android:text="ADD USER"
+            android:onClick="addUser"
             android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -61,6 +61,7 @@
         android:background="@color/colorSecondary"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
+        android:onClick="removeUser"
         android:text="REMOVE USER"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"

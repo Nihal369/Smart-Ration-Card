@@ -33,7 +33,7 @@ public class FingerPrint extends AppCompatActivity implements FingerPrintAuthCal
     private DatabaseReference mRootRef,rationCardNumberRef,userRef;
     Map<String, String> fireBaseMap;
     ImageView profilePic;
-    TextView userNameText,categoryText,numberOfRationsText,numberOfFamilyNumbersText;
+    TextView userNameText,categoryText,numberOfRationsText,numberOfFamilyNumbersText,emailText,phoneNumberText;
     FingerPrintAuthHelper mFingerPrintAuthHelper;
 
     @Override
@@ -45,6 +45,9 @@ public class FingerPrint extends AppCompatActivity implements FingerPrintAuthCal
         categoryText=findViewById(R.id.categoryTextView);
         numberOfRationsText=findViewById(R.id.numberOfRationsTextView);
         numberOfFamilyNumbersText=findViewById(R.id.numberOfFamilyMembersTextView);
+        emailText=findViewById(R.id.emailTextView);
+        phoneNumberText=findViewById(R.id.phoneNumberTextView);
+
         getInfoFromFireBase();
 
         mFingerPrintAuthHelper = FingerPrintAuthHelper.getHelper(this,this);
@@ -108,7 +111,7 @@ public class FingerPrint extends AppCompatActivity implements FingerPrintAuthCal
     private void retrieveDataFromFirebaseMap()
     {
         if(fireBaseMap!=null) {
-            //Retrive data from the snapshot map
+            //Retrieve data from the snapshot map
             for (String key : fireBaseMap.keySet()) {
                 switch (key)
                 {
@@ -121,6 +124,10 @@ public class FingerPrint extends AppCompatActivity implements FingerPrintAuthCal
                     case "numberOfRations":LocalDB.setNumberOfRations(Integer.parseInt(String.valueOf(fireBaseMap.get(key))));
                                     break;
                     case "profilePic":LocalDB.setProfilePicUri(Uri.parse(String.valueOf(fireBaseMap.get(key))));
+                                    break;
+                    case "email":LocalDB.setEmailID(String.valueOf(fireBaseMap.get(key)));
+                                    break;
+                    case "phoneNumber":LocalDB.setPhoneNumber(String.valueOf(fireBaseMap.get(key)));
                                     break;
                 }
             }
@@ -143,6 +150,8 @@ public class FingerPrint extends AppCompatActivity implements FingerPrintAuthCal
         categoryText.setText("Category:"+LocalDB.getCateogry());
         numberOfRationsText.setText("Rations This Month:"+String.valueOf(LocalDB.getNumberOfRations()));
         numberOfFamilyNumbersText.setText("Family Members:"+String.valueOf(LocalDB.getFamilyMembers()));
+        emailText.setText(LocalDB.getEmailID());
+        phoneNumberText.setText(LocalDB.getPhoneNumber());
     }
 
 

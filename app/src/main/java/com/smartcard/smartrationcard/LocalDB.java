@@ -7,7 +7,7 @@ import android.net.Uri;
 public class LocalDB {
 
     //Variable decelerations
-    private static String rationCardID,userName,category;
+    private static String rationCardID,userName,category,phoneNumber,emailID;
     private static int numberOfRations,familyMembers;
     private static Uri profilePicUri;
 
@@ -40,4 +40,12 @@ public class LocalDB {
     public static void setFamilyMembers(int value){ familyMembers=value; }
 
     public static int getFamilyMembers(){return  familyMembers; }
+
+    public static void setPhoneNumber(String value) {phoneNumber = value;}
+
+    public static String getPhoneNumber() {return phoneNumber;}
+
+    public static void setEmailID(String value) {emailID = value;}
+
+    public static String getEmailID() {return emailID;}
 }

@@ -25,7 +25,7 @@ public class RemoveUser extends AppCompatActivity {
     //Object decelerations
     EditText removeUserEditText;
     String rationCardNumber;
-    DatabaseReference mRootRef,numberRef;
+    DatabaseReference mRootRef,numberRef,userRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +44,10 @@ public class RemoveUser extends AppCompatActivity {
         //Get the firebase reference
         mRootRef = FirebaseDatabase.getInstance().getReference();
         numberRef = mRootRef.child("rationcardnumber");
+        userRef=numberRef.child(rationCardNumber);
 
         //Check if user exists
-        numberRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //Check if the user for the ration card number entered exists
@@ -54,7 +55,7 @@ public class RemoveUser extends AppCompatActivity {
                 {
                     //Delete the entire node corresponding
                     new FancyAlertDialog.Builder(RemoveUser.this)
-                            .setTitle("Attend the victim")
+                            .setTitle("Delete the user")
                             .setBackgroundColor(Color.parseColor("#F44336"))  //Don't pass R.color.colorvalue
                             .setMessage("Are you sure you want to delete the user")
                             .setNegativeBtnText("No")
@@ -69,8 +70,8 @@ public class RemoveUser extends AppCompatActivity {
                                 @Override
                                 public void OnClick() {
 
-                                    numberRef.child(rationCardNumber).removeValue();
-                                    Toasty.success(RemoveUser.this, rationCardNumber + "deleted", Toast.LENGTH_SHORT).show();
+                                    userRef.removeValue();
+                                    Toasty.success(RemoveUser.this, rationCardNumber + " Deleted", Toast.LENGTH_SHORT).show();
 
                                 }
                             })

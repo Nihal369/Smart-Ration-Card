@@ -119,28 +119,28 @@ public class RationDistribution extends AppCompatActivity {
         //EDIT CONTENT OF EMAIL HERE
         String emailContent=
                         "Details of your purchase from Ration Shop on "+formattedDate
-                        +"\n"
-                        +"CUSTOMER:"
+                        +"\n\n"
+                        +"Customer: "
                         +LocalDB.getUserName()
                         +"\n"
-                        +"RATION CARD NUMBER:"
+                        +"Ration Card Number: "
                         +LocalDB.getRationCardID()
-                        +"\n\n\n"
+                        +"\n\n"
 
-                        +"Rice:"+(familyMembers*RationShop.getRiceQuantity()*aplOrBplFactor)+"KG:"
-                        +familyMembers*RationShop.getRiceQuantity()*RationShop.getRicePrice()*aplOrBplFactor
+                        +"Rice "+(familyMembers*RationShop.getRiceQuantity()*aplOrBplFactor)+" KG:"
+                        +familyMembers*RationShop.getRiceQuantity()*RationShop.getRicePrice()*aplOrBplFactor+" RS"
                         +"\n"
-                        +"Wheat:"+(familyMembers*RationShop.getWheatQuanity()*aplOrBplFactor)+"KG:"
-                        +familyMembers*RationShop.getWheatQuanity()*RationShop.getWheatPrice()*aplOrBplFactor
+                        +"Wheat "+(familyMembers*RationShop.getWheatQuanity()*aplOrBplFactor)+" KG:"
+                        +familyMembers*RationShop.getWheatQuanity()*RationShop.getWheatPrice()*aplOrBplFactor+" RS"
                         +"\n"
-                        +"Kerosene:"+(familyMembers*RationShop.getKeroseneQuantity()*aplOrBplFactor)+"LTR:"
-                        +familyMembers*RationShop.getKeroseneQuantity()*RationShop.getKerosenePrice()*aplOrBplFactor
+                        +"Kerosene "+(familyMembers*RationShop.getKeroseneQuantity()*aplOrBplFactor)+" LTR:"
+                        +familyMembers*RationShop.getKeroseneQuantity()*RationShop.getKerosenePrice()*aplOrBplFactor+" RS"
                         +"\n"
-                        +"Pulses:"+(familyMembers*RationShop.getPulsesQuantity()*aplOrBplFactor)+"KG:"
-                        +familyMembers*RationShop.getPulsesQuantity()*RationShop.getPulsesPrice()*aplOrBplFactor
-                        +"\n"
-                        +"TOTAL PRICE:"
-                        +totalPrice;
+                        +"Pulses "+(familyMembers*RationShop.getPulsesQuantity()*aplOrBplFactor)+" KG:"
+                        +familyMembers*RationShop.getPulsesQuantity()*RationShop.getPulsesPrice()*aplOrBplFactor+" RS"
+                        +"\n\n"
+                        +"TOTAL PRICE: "
+                        +totalPrice+" RS";
 
 
         BackgroundMail.newBuilder(this)
@@ -151,18 +151,6 @@ public class RationDistribution extends AppCompatActivity {
                 .withType(BackgroundMail.TYPE_PLAIN)
                 .withSubject("Invoice for Ration Shop Purchase")
                 .withBody(emailContent)
-                .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
-                    @Override
-                    public void onSuccess() {
-
-                    }
-                })
-                .withOnFailCallback(new BackgroundMail.OnFailCallback() {
-                    @Override
-                    public void onFail() {
-
-                    }
-                })
                 .send();
     }
 

@@ -1,8 +1,11 @@
 package com.smartcard.smartrationcard;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +14,7 @@ import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
@@ -19,6 +23,12 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class RationDistribution extends AppCompatActivity {
 
@@ -30,6 +40,10 @@ public class RationDistribution extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ration_distribution);
+
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.setThreadPolicy( new StrictMode.ThreadPolicy.Builder().permitAll().build() );
+        }
 
         //Object initializations
         profilePic=findViewById(R.id.profilePicImageView2);
@@ -127,16 +141,16 @@ public class RationDistribution extends AppCompatActivity {
                         +LocalDB.getRationCardID()
                         +"\n\n"
 
-                        +"Rice "+(familyMembers*RationShop.getRiceQuantity()*aplOrBplFactor)+" KG:"
+                        +"Rice "+(familyMembers*RationShop.getRiceQuantity()*aplOrBplFactor)+" KG: "
                         +familyMembers*RationShop.getRiceQuantity()*RationShop.getRicePrice()*aplOrBplFactor+" RS"
                         +"\n"
-                        +"Wheat "+(familyMembers*RationShop.getWheatQuanity()*aplOrBplFactor)+" KG:"
+                        +"Wheat "+(familyMembers*RationShop.getWheatQuanity()*aplOrBplFactor)+" KG: "
                         +familyMembers*RationShop.getWheatQuanity()*RationShop.getWheatPrice()*aplOrBplFactor+" RS"
                         +"\n"
-                        +"Kerosene "+(familyMembers*RationShop.getKeroseneQuantity()*aplOrBplFactor)+" LTR:"
+                        +"Kerosene "+(familyMembers*RationShop.getKeroseneQuantity()*aplOrBplFactor)+" LTR: "
                         +familyMembers*RationShop.getKeroseneQuantity()*RationShop.getKerosenePrice()*aplOrBplFactor+" RS"
                         +"\n"
-                        +"Pulses "+(familyMembers*RationShop.getPulsesQuantity()*aplOrBplFactor)+" KG:"
+                        +"Pulses "+(familyMembers*RationShop.getPulsesQuantity()*aplOrBplFactor)+" KG: "
                         +familyMembers*RationShop.getPulsesQuantity()*RationShop.getPulsesPrice()*aplOrBplFactor+" RS"
                         +"\n\n"
                         +"TOTAL PRICE: "
@@ -146,8 +160,7 @@ public class RationDistribution extends AppCompatActivity {
         BackgroundMail.newBuilder(this)
                 .withUsername("smartrationcardvjc@gmail.com")
                 .withPassword("agnirose")
-                //TODO:REPLACE WITH CUSTOMER MAIL ID
-                .withMailto("nihalismailk@gmail.com")
+                .withMailto(LocalDB.getEmailID())
                 .withType(BackgroundMail.TYPE_PLAIN)
                 .withSubject("Invoice for Ration Shop Purchase")
                 .withBody(emailContent)
@@ -155,59 +168,58 @@ public class RationDistribution extends AppCompatActivity {
     }
 
 
-    private void sendSMS()
-    {
+    private void sendSMS() {
 
         //EDIT CONTENT OF SMS HERE
-        String smsContent=
-                        "CUSTOMER:"
-                        +LocalDB.getUserName()
-                        +"\n\n\n"
+        String smsContent =
+                "\n\nCUSTOMER:"
+                        + LocalDB.getUserName()
+                        + "\n\n\n"
 
-                        +"Rice:"+(familyMembers*RationShop.getRiceQuantity()*aplOrBplFactor)+"KG:"
-                        +familyMembers*RationShop.getRiceQuantity()*RationShop.getRicePrice()*aplOrBplFactor
-                        +"\n"
-                        +"Wheat:"+(familyMembers*RationShop.getWheatQuanity()*aplOrBplFactor)+"KG:"
-                        +familyMembers*RationShop.getWheatQuanity()*RationShop.getWheatPrice()*aplOrBplFactor
-                        +"\n"
-                        +"Kerosene:"+(familyMembers*RationShop.getKeroseneQuantity()*aplOrBplFactor)+"LTR:"
-                        +familyMembers*RationShop.getKeroseneQuantity()*RationShop.getKerosenePrice()*aplOrBplFactor
-                        +"\n"
-                        +"Pulses:"+(familyMembers*RationShop.getPulsesQuantity()*aplOrBplFactor)+"KG:"
-                        +familyMembers*RationShop.getPulsesQuantity()*RationShop.getPulsesPrice()*aplOrBplFactor
-                        +"\n"
-                        +"TOTAL PRICE:"
-                        +totalPrice;
+                        + "Rice:" + (familyMembers * RationShop.getRiceQuantity() * aplOrBplFactor) + "KG: "
+                        + familyMembers * RationShop.getRiceQuantity() * RationShop.getRicePrice() * aplOrBplFactor
+                        + "\n"
+                        + "Wheat:" + (familyMembers * RationShop.getWheatQuanity() * aplOrBplFactor) + "KG: "
+                        + familyMembers * RationShop.getWheatQuanity() * RationShop.getWheatPrice() * aplOrBplFactor
+                        + "\n"
+                        + "Kerosene:" + (familyMembers * RationShop.getKeroseneQuantity() * aplOrBplFactor) + "LTR: "
+                        + familyMembers * RationShop.getKeroseneQuantity() * RationShop.getKerosenePrice() * aplOrBplFactor
+                        + "\n"
+                        + "Pulses:" + (familyMembers * RationShop.getPulsesQuantity() * aplOrBplFactor) + "KG: "
+                        + familyMembers * RationShop.getPulsesQuantity() * RationShop.getPulsesPrice() * aplOrBplFactor
+                        + "\n"
+                        + "TOTAL PRICE:"
+                        + totalPrice;
+
+        String ACCOUNT_SID,AUTH_TOKEN,TWILIO_PHONE_NUM;
+
+        ACCOUNT_SID="AC358ecf2b8d1b56cd58a867fa34283a6b";
+        AUTH_TOKEN="d86ad7473050dbd74cb520e9347b6ac1";
+        TWILIO_PHONE_NUM="+1 858-239-2356";
+
+        OkHttpClient client = new OkHttpClient();
+        String url = "https://api.twilio.com/2010-04-01/Accounts/"+ACCOUNT_SID+"/SMS/Messages";
+        String base64EncodedCredentials = "Basic " + Base64.encodeToString((ACCOUNT_SID + ":" + AUTH_TOKEN).getBytes(), Base64.NO_WRAP);
+
+        RequestBody body = new FormBody.Builder()
+                .add("From", TWILIO_PHONE_NUM)
+                .add("To", "+91"+LocalDB.getPhoneNumber())
+                .add("Body", smsContent)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .header("Authorization", base64EncodedCredentials)
+                .build();
+
+
         try {
-            // Construct data
-            String data = "";
-            data += "username=" + URLEncoder.encode("nihal369", "ISO-8859-1");
-            data += "&password=" + URLEncoder.encode("agnirose", "ISO-8859-1");
-            data += "&message=" + URLEncoder.encode(smsContent, "ISO-8859-1");
-            data += "&want_report=1";
-            //TODO:REPLACE WITH CUSTOMER NUMBER
-            data += "&msisdn=07356647169";// relace with the number
-
-            // Send data
-            URL url = new URL("http://bulksms.vsms.net:5567/eapi/submission/send_sms/2/2.0");
-
-            URLConnection conn = url.openConnection();
-            conn.setDoOutput(true);
-            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(data);
-            wr.flush();
-
-            // Get the response
-            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String line;
-            while ((line = rd.readLine()) != null) {
-                // Print the response output...
-                System.out.println(line);
-            }
-            wr.close();
-            rd.close();
+            Response response = client.newCall(request).execute();
+            Log.d("SUPERMAN", "sendSms: "+ response.body().string());
         }
-        catch (Exception e) {
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }

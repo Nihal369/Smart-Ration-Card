@@ -46,8 +46,40 @@ public class RFID_Read extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Intent intent = getIntent();
+        String action = intent.getAction();
+
+        if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)) {
+            Toasty.success(this, "RATION CARD DETECTED", Toast.LENGTH_LONG).show();
+
+            Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+
+            if (tag == null)
+            {
+                Toasty.error(this, "ERROR READING THE CARD", Toast.LENGTH_LONG).show();
+            }
+
+            else
+            {
+                String tagInfo="";
+
+                byte[] tagId = tag.getId();
+
+                for (byte aTagId : tagId) {
+                    tagInfo += Integer.toHexString(aTagId & 0xFF);
+                }
+
+                Toasty.success(this, tagInfo, Toast.LENGTH_LONG).show();
+                Log.i("NIHAL",tagInfo);
+            }
+        }
 
 
+    }
 
     //Move to AdminLogin Activity
     public void moveToAdminLogin(View view)

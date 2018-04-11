@@ -29,6 +29,9 @@ import es.dmoral.toasty.Toasty;
 public class RFID_Read extends AppCompatActivity {
 
     private NfcAdapter nfcAdapter;
+    String tagInfo;
+    private DatabaseReference mRootRef,rationCardNumberRef,userRef;
+    PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +47,34 @@ public class RFID_Read extends AppCompatActivity {
         {
             Toasty.warning(this,"PLEASE ENABLE NFC",Toast.LENGTH_LONG).show();
         }
+
+        pendingIntent=PendingIntent.getActivity(this, 0, new Intent(this,
+                getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null);
+    }
 
-        Intent intent = getIntent();
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(nfcAdapter!=null)
+        {
+            nfcAdapter.disableForegroundDispatch(this);
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        //Intent intent=getIntent();
         String action = intent.getAction();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)) {
             Toasty.success(this, "RATION CARD DETECTED", Toast.LENGTH_LONG).show();
@@ -65,7 +88,7 @@ public class RFID_Read extends AppCompatActivity {
 
             else
             {
-                String tagInfo="";
+                tagInfo="";
 
                 byte[] tagId = tag.getId();
 
@@ -73,12 +96,41 @@ public class RFID_Read extends AppCompatActivity {
                     tagInfo += Integer.toHexString(aTagId & 0xFF);
                 }
 
-                Toasty.success(this, tagInfo, Toast.LENGTH_LONG).show();
-                Log.i("NIHAL",tagInfo);
+                processRFID();
             }
         }
+    }
 
+    //Process RFID tag id
+    public void processRFID() {
 
+        Log.i("NIHAL","INSIDE PROCESS RFID");
+        mRootRef = FirebaseDatabase.getInstance().getReference();
+        //Get the child reference
+        rationCardNumberRef = mRootRef.child("rationcardnumber");
+        //rationcardnumber->1000,1001 etc
+        userRef = rationCardNumberRef.child(tagInfo);
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                {
+                    LocalDB.setRationCardID(tagInfo);
+                    Intent intent = new Intent(RFID_Read.this, FingerPrint.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toasty.error(RFID_Read.this, "Invalid User", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     //Move to AdminLogin Activity
@@ -87,4 +139,5 @@ public class RFID_Read extends AppCompatActivity {
         Intent intent = new Intent(RFID_Read.this, AdminLogin.class);
         startActivity(intent);
     }
+
 }

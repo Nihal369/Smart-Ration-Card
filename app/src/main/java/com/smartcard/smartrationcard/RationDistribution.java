@@ -113,6 +113,7 @@ public class RationDistribution extends AppCompatActivity {
 
     public void completePurchase(View view)
     {
+        //Complete a purchase
         sendEmail();
         sendSMS();
         //Move to next activity
@@ -124,6 +125,8 @@ public class RationDistribution extends AppCompatActivity {
 
     private void sendEmail()
     {
+        //Send a email of the purchase invoice
+
         //GET THE CURRENT DATE
         Date date = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
@@ -157,6 +160,7 @@ public class RationDistribution extends AppCompatActivity {
                         +totalPrice+" RS";
 
 
+        //Send a mail to the customer
         BackgroundMail.newBuilder(this)
                 .withUsername("smartrationcardvjc@gmail.com")
                 .withPassword("agnirose")
@@ -170,6 +174,7 @@ public class RationDistribution extends AppCompatActivity {
 
     private void sendSMS() {
 
+        //Send SMS of the purchase invoice
         //EDIT CONTENT OF SMS HERE
         String smsContent =
                 "\n\nCUSTOMER:"
@@ -191,6 +196,7 @@ public class RationDistribution extends AppCompatActivity {
                         + "TOTAL PRICE:"
                         + totalPrice;
 
+        //Calling the twilio api
         String ACCOUNT_SID,AUTH_TOKEN,TWILIO_PHONE_NUM;
 
         ACCOUNT_SID="AC358ecf2b8d1b56cd58a867fa34283a6b";
@@ -216,7 +222,6 @@ public class RationDistribution extends AppCompatActivity {
 
         try {
             Response response = client.newCall(request).execute();
-            Log.d("SUPERMAN", "sendSms: "+ response.body().string());
         }
         catch (IOException e)
         {

@@ -12,6 +12,7 @@ public class PurchaseComplete extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_complete);
 
+        //Show a purchase complete screen and move to RFID_READ
         new CountDownTimer(3000, 1000) {
 
             public void onTick(long millisUntilFinished) {

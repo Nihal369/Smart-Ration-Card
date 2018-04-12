@@ -51,6 +51,7 @@ public class AdminPanel extends AppCompatActivity {
 
     //Update Prices in the RationShop Class
     public void updatePrices(View view) {
+        //Update the prices with the prices in the text field
         try {
             ricePrice = ricePriceEditText.getText().toString();
             RationShop.setRicePrice(Integer.parseInt(ricePrice));
@@ -162,6 +163,7 @@ public class AdminPanel extends AppCompatActivity {
 
     public void cancelActivity(View view)
     {
+        //Equivalent to a back button
         Intent intent=new Intent(this,RFID_Read.class);
         startActivity(intent);
         finish();

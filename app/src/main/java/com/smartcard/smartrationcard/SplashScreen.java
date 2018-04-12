@@ -9,6 +9,7 @@ public class SplashScreen extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Objective:Show a splash screen for 3 seconds and move to RFID_READ Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 

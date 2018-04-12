@@ -7,6 +7,7 @@ import android.view.View;
 
 public class AdminMenu extends AppCompatActivity {
 
+    //Button Click functions for the three functions
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

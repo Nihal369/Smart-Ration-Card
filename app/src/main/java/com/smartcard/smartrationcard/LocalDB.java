@@ -1,6 +1,6 @@
 package com.smartcard.smartrationcard;
 
-//Local Database class to store intermediate values
+//Local Database class to store values from firebase
 
 import android.net.Uri;
 

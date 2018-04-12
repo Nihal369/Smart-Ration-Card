@@ -11,6 +11,8 @@ import es.dmoral.toasty.Toasty;
 
 public class AdminLogin extends AppCompatActivity {
 
+    //Authenticate the admin
+
     //Object declerations
     EditText adminIdEditText,adminPasswordEditText;
     String adminID,adminPassword;

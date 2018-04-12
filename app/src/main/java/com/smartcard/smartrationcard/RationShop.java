@@ -39,9 +39,7 @@ public class RationShop {
 
     public static int getBplFactor(){return bplFactor;}
 
-    public static void setKerosenePrice(int kerosenePrice) {
-        RationShop.kerosenePrice = kerosenePrice;
-    }
+    public static void setKerosenePrice(int kerosenePrice) {RationShop.kerosenePrice = kerosenePrice;}
 
     public static void setAplFactor(int aplFactor) {
         RationShop.aplFactor = aplFactor;
@@ -55,13 +53,9 @@ public class RationShop {
         RationShop.pulsesPrice = pulsesPrice;
     }
 
-    public static void setKeroseneQuantity(int keroseneQuantity) {
-        RationShop.keroseneQuantity = keroseneQuantity;
-    }
+    public static void setKeroseneQuantity(int keroseneQuantity) {RationShop.keroseneQuantity = keroseneQuantity;}
 
-    public static void setPulsesQuantity(int pulsesQuantity) {
-        RationShop.pulsesQuantity = pulsesQuantity;
-    }
+    public static void setPulsesQuantity(int pulsesQuantity) {RationShop.pulsesQuantity = pulsesQuantity;}
 
     public static void setRicePrice(int ricePrice) {
         RationShop.ricePrice = ricePrice;
@@ -75,8 +69,6 @@ public class RationShop {
         RationShop.wheatPrice = wheatPrice;
     }
 
-    public static void setWheatQuantity(int wheatQuantity) {
-        RationShop.wheatQuantity = wheatQuantity;
-    }
+    public static void setWheatQuantity(int wheatQuantity) {RationShop.wheatQuantity = wheatQuantity;}
 
 }

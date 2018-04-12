@@ -194,13 +194,7 @@ public class FingerPrint extends AppCompatActivity implements FingerPrintAuthCal
                 //Cannot recognize the fingerprint scanned.
                 Toasty.error(this, "Wrong Fingerprint", Toast.LENGTH_SHORT).show();
                 break;
-            case AuthErrorCodes.NON_RECOVERABLE_ERROR:
-                //This is not recoverable error. Try other options for user authentication. like pin, password.
-                Toasty.error(this, "Please Try Again", Toast.LENGTH_SHORT).show();
-                break;
-            case AuthErrorCodes.RECOVERABLE_ERROR:
-                Toasty.error(this, "Please Try Again", Toast.LENGTH_SHORT).show();
-                break;
+
         }
     }
 }

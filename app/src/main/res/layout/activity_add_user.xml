@@ -54,7 +54,6 @@
             android:hint="RATION CARD NUMBER"
             android:textColorHint="@color/colorSecondary"
             android:textSize="18sp"
-            android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addUserText2" />

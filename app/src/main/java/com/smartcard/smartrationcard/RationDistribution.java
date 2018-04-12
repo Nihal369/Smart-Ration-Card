@@ -1,6 +1,7 @@
 package com.smartcard.smartrationcard;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -117,9 +118,23 @@ public class RationDistribution extends AppCompatActivity {
         sendEmail();
         sendSMS();
         //Move to next activity
-        Intent intent=new Intent(RationDistribution.this,PurchaseComplete.class);
-        startActivity(intent);
-        finish();
+        //Start the countdown of splash screen
+        new CountDownTimer(3500, 1000) {
+
+            @Override
+            public void onTick(long l) {
+
+            }
+
+            //Launch RFID_READ after finishing timeLeft
+            public void onFinish() {
+                Intent intent=new Intent(RationDistribution.this,PurchaseComplete.class);
+                startActivity(intent);
+                finish();
+            }
+
+        }.start();//Start the countdown timer
+
     }
 
 
@@ -196,7 +211,6 @@ public class RationDistribution extends AppCompatActivity {
                         + "TOTAL PRICE:"
                         + totalPrice;
 
-        //Calling the twilio api
         String ACCOUNT_SID,AUTH_TOKEN,TWILIO_PHONE_NUM;
 
         ACCOUNT_SID="AC358ecf2b8d1b56cd58a867fa34283a6b";
@@ -222,6 +236,7 @@ public class RationDistribution extends AppCompatActivity {
 
         try {
             Response response = client.newCall(request).execute();
+            Log.d("SUPERMAN", "sendSms: "+ response.body().string());
         }
         catch (IOException e)
         {

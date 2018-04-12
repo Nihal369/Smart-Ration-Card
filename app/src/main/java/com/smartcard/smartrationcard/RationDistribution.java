@@ -233,7 +233,7 @@ public class RationDistribution extends AppCompatActivity {
                 .header("Authorization", base64EncodedCredentials)
                 .build();
 
-
+        Log.i("SUPERMAN","INSIDE SEND SMS");
         try {
             Response response = client.newCall(request).execute();
             Log.d("SUPERMAN", "sendSms: "+ response.body().string());
